@@ -4,3 +4,9 @@ export interface Movie {
   imageUrl: string;
   id?: string;
 }
+
+export interface ButtonProps {
+  type: string;
+  label: string;
+  onClick?: () => void;
+}
