@@ -10,3 +10,9 @@ export interface ButtonProps {
   label: string;
   onClick?: () => void;
 }
+
+export interface InputFieldProps {
+  placeholderText: string;
+  inputData: string;
+  setInputData: (data: string) => void;
+}
