@@ -6,6 +6,7 @@ import WavyFooter from "@/components/wavy-footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-montserrat",
 });
 
@@ -20,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${montserrat.variable} antialiased`}>
+    <html lang="en" className={`${montserrat.variable} antialiased`}>
+      <body>
         <div className="bg-[#093545] min-h-screen flex flex-col justify-between">
           <UserStateProvider>{children}</UserStateProvider>
           <WavyFooter />

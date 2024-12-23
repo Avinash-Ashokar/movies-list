@@ -14,9 +14,11 @@ export default {
         background: '#093545',
         input: '#224957',
         card: '#092C39',
+        textColor: "#FFFFFF"
       },
       fontFamily: {
-        montserrat: ['var(--font-montserrat)', 'sans-serif'],
+        sans: ['var(--font-montserrat)'],
+        montserrat: ['var(--font-montserrat)'],
       },
       fontSize: {
         'heading-1': ['64px', { lineHeight: '80px', letterSpacing: '0%' }],
@@ -42,6 +44,7 @@ export default {
         '8': '8px',
         '12': '12px',
         '16': '16px',
+        '20': '20px',
         '24': '24px',
         '32': '32px',
         '40': '40px',
@@ -50,6 +53,9 @@ export default {
         '80': '80px',
         '120': '120px',
         '160': '160px',
+      },
+      textColor: {
+        DEFAULT: '#FFFFFF',
       },
     },
   },
