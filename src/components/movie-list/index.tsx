@@ -12,7 +12,7 @@ export default function MovieList() {
     {}
   );
   const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage] = useState(2);
+  const [moviesPerPage] = useState(8);
   const [totalMovies, setTotalMovies] = useState(0);
   const { user } = useUserStateContext();
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 640);
@@ -79,7 +79,7 @@ export default function MovieList() {
 
   return (
     <div>
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:mt-[120px]">
+      <div className="grid grid-cols-2 gap-x-20 gap-y-40 sm:grid-cols-3 lg:grid-cols-4">
         {Object.keys(movieListData).map((key) => (
           <Link href={`movies/${movieListData[key].id}`} key={key}>
             <MovieCard movieData={movieListData[key]} />

@@ -38,7 +38,7 @@ const ImageUpload = ({ imageFile, setImageFile }: ImageUploadProps) => {
       <div
         {...getRootProps()}
         className={`
-          border-2 border-dashed border-[#FFFFFF]
+          border-2 border-dashed border-textColor
           flex flex-col items-center justify-center
           w-full h-full cursor-pointer rounded-[10px]
           transition-colors duration-200
@@ -54,7 +54,7 @@ const ImageUpload = ({ imageFile, setImageFile }: ImageUploadProps) => {
           <img
             src={imageFile}
             alt="Preview"
-            className="max-h-[350px] object-contain"
+            className="w-full h-full object-cover p-16"
           />
         ) : (
           <div className="flex flex-col justify-center items-center gap-y-3">
@@ -64,7 +64,9 @@ const ImageUpload = ({ imageFile, setImageFile }: ImageUploadProps) => {
               width={16}
               height={16}
             />
-            <p className=" text-sm font-normal leading-6">Drop an image here</p>
+            <p className="text-body-small font-normal font-montserrat text-textColor">
+              Upload or Drop an image here
+            </p>
           </div>
         )}
       </div>

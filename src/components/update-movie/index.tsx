@@ -87,14 +87,14 @@ const UpdateMovie: FC<UpdateMovieProps> = ({
     }));
 
   return (
-    <div className="p-6 flex-grow flex flex-col sm:p-[120px] sm:pb-0">
-      <div>
-        <h2 className="text-[32px] font-semibold leading-10 sm:text-5xl sm:font-semibold sm:leading-[56px] mb-20 sm:mb-0">
+    <div className="px-24 flex-grow flex flex-col">
+      <div className="my-80">
+        <h2 className="text-heading-3 font-semibold text-textColor font-montserrat">
           {headerTitle}
         </h2>
       </div>
       <div className="sm:mt-[120px] gap-y-6 sm:gap-y-0 flex flex-col-reverse sm:gap-x-[127px]">
-        <div className="flex gap-x-3 visible mt-4 sm:hidden">
+        <div className="grid grid-cols-2 gap-x-3 visible mt-16 sm:hidden">
           <Link href="/">
             <Button type="outline" label="Cancel" />
           </Link>

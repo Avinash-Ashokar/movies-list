@@ -4,23 +4,23 @@ import Image from "next/image";
 export function MovieCard({ movieData }: { movieData: Movie }) {
   const { title, year, imageUrl } = movieData;
 
-  console.log("Movie Data: ", movieData);
-
   return (
-    <div className="w-full h-[334px] sm:h-[504px] bg-[#092C39] rounded-xl">
+    <div className="w-full h-[334px] bg-card rounded-xl">
       <Image
         src={imageUrl}
-        alt="Zindagi Na Milagi"
+        alt={title}
         unoptimized
         width={0}
         height={0}
-        className="rounded-t-xl sm:rounded-lg sm:m-[8px] mb-[0px] w-full sm:w-[calc(100%-16px)] h-[246px]"
+        className="rounded-t-xl mb-[0px] w-full h-[246px]"
       />
-      <div className="p-3 sm:p-4">
-        <h1 className="text-base font-bold leading-6 sm:text-xl sm:font-medium sm:leading-8 text-[#FFFFFF]">
+      <div className="m-12 flex flex-col justify-between h-64">
+        <h1 className="text-heading-6 font-bold font-montserrat text-textColor overflow-hidden h-24 truncate">
           {title}
         </h1>
-        <p className="text-sm font-normal leading-6">{year}</p>
+        <p className="text-body-small font-regular font-montserrat text-textColor">
+          {year}
+        </p>
       </div>
     </div>
   );

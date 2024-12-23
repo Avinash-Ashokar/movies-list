@@ -28,10 +28,10 @@ export default function SignInPage() {
 
   return (
     <div className="flex-grow flex flex-col justify-center items-center">
-      <div className="flex w-full gap-y-6 flex-col items-center p-6">
-        <h1 className="font-montserrat text-[48px] mb-4 font-semibold leading-[80px] text-center sm:text-[64px]">
+      <div className="flex w-full gap-y-6 flex-col items-center p-6 max-w-[500px]">
+        <h2 className="text-heading-2 font-semibold font-montserrat text-textColor">
           Sign in
-        </h1>
+        </h2>
         <div className="flex min-w-full gap-y-6 flex-col">
           <InputField
             inputData={email}
@@ -42,6 +42,7 @@ export default function SignInPage() {
             inputData={password}
             setInputData={(data: string) => setPassword(data)}
             placeholderText="Password"
+            type="password"
           />
         </div>
         <Checkbox isSelected={rememberMe} setIsSelected={setRememberMe} />

@@ -8,9 +8,9 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <div className="flex justify-between mt-20 sm:mt-0 mb-20 sm:mb-0">
-      <div className="flex items-center gap-3">
-        <h2 className="text-[32px] leading-10 sm:text-5xl font-semibold sm:leading-[56px] text-center">
+    <div className="flex justify-between my-80">
+      <div className="flex items-center gap-12">
+        <h2 className="text-heading-3 font-semibold font-montserrat text-textColor text-center">
           My Movies
         </h2>
         <button onClick={() => router.push("/add-movie")}>

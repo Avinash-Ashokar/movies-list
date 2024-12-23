@@ -1,10 +1,10 @@
 import { InputFieldProps } from "@/types";
-import { useEffect } from "react";
 
 export default function InputField({
   placeholderText,
   inputData,
   setInputData,
+  type = "text",
 }: InputFieldProps) {
   const handleInputChange = (value: string) => {
     setInputData(value);
@@ -13,10 +13,11 @@ export default function InputField({
   return (
     <div>
       <input
+        type={type}
         placeholder={placeholderText}
         value={inputData}
         onChange={(e) => handleInputChange(e.target.value)}
-        className="bg-[#224957] min-w-full sm:w-[300px] h-[45px] rounded-[10px] px-4 focus:outline-none text-sm text-[#FFFFFF] font-normal leading-6"
+        className="h-[45px] min-w-full text-body-small font-regular font-montserrat bg-input focus:bg-input rounded-[10px] px-16 focus:outline-none placeholder:text-textColor"
       />
     </div>
   );
