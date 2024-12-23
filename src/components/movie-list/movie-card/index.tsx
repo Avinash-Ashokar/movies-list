@@ -4,6 +4,8 @@ import Image from "next/image";
 export function MovieCard({ movieData }: { movieData: Movie }) {
   const { title, year, imageUrl } = movieData;
 
+  console.log("Movie Data: ", movieData);
+
   return (
     <div className="w-full h-[334px] sm:h-[504px] bg-[#092C39] rounded-xl">
       <Image
