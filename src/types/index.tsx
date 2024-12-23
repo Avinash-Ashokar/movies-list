@@ -17,6 +17,7 @@ export interface InputFieldProps {
   placeholderText: string;
   inputData: string;
   setInputData: (data: string) => void;
+  type?: string;
 }
 
 export interface CheckboxProps {
