@@ -7,7 +7,11 @@ import { useDropzone } from "react-dropzone";
 import { ImageUploadProps } from "@/types";
 import { DownloadIcon } from "../../../public";
 
-const ImageUpload = ({ imageFile, setImageFile }: ImageUploadProps) => {
+const ImageUpload = ({
+  imageFile,
+  setImageFile,
+  hasError,
+}: ImageUploadProps) => {
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       const file = acceptedFiles[0];
@@ -39,6 +43,7 @@ const ImageUpload = ({ imageFile, setImageFile }: ImageUploadProps) => {
         {...getRootProps()}
         className={`
           border-2 border-dashed border-textColor
+          ${hasError ? "border border-red-500" : ""}
           flex flex-col items-center justify-center
           w-full h-full cursor-pointer rounded-[10px]
           transition-colors duration-200
@@ -70,6 +75,11 @@ const ImageUpload = ({ imageFile, setImageFile }: ImageUploadProps) => {
           </div>
         )}
       </div>
+      {hasError && (
+        <p className="text-body-xs font-regular font-montserrat text-error">
+          {hasError}
+        </p>
+      )}
     </div>
   );
 };

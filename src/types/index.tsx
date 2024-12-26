@@ -18,6 +18,7 @@ export interface InputFieldProps {
   inputData: string;
   setInputData: (data: string) => void;
   type?: string;
+  hasError: string;
 }
 
 export interface CheckboxProps {
@@ -33,6 +34,7 @@ export interface UpdateMovieProps {
 export interface ImageUploadProps {
   imageFile: string;
   setImageFile: (data: string) => void; // Add this line to define setImageFile
+  hasError: string;
 }
 
 export interface userStateContextProps {

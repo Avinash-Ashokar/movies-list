@@ -6,6 +6,7 @@ import {
   query,
   startAfter,
 } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 export async function fetchAllMovies(uid: string) {
   try {
@@ -52,3 +53,16 @@ export async function fetchMoviesPage(
     throw error;
   }
 }
+
+export const notifyError = (content: string) => toast.error(content);
+
+export const notifySuccess = (content: string) => toast.success(content);
+
+export const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple regex for email validation
+  return emailRegex.test(email);
+};
+
+export const validatePassword = (password: string): boolean => {
+  return password.length >= 6; // Password must be at least 6 characters
+};
