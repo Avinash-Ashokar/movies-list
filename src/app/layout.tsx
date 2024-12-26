@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { UserStateProvider } from "@/context/userStateContext";
 import WavyFooter from "@/components/wavy-footer";
+import { ToastContainer } from "react-toastify";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -24,7 +25,10 @@ export default function RootLayout({
     <html lang="en" className={`${montserrat.variable} antialiased`}>
       <body>
         <div className="bg-[#093545] min-h-screen flex flex-col justify-between">
-          <UserStateProvider>{children}</UserStateProvider>
+          <UserStateProvider>
+            <ToastContainer />
+            {children}
+          </UserStateProvider>
           <WavyFooter />
         </div>
       </body>
