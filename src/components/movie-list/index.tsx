@@ -12,10 +12,10 @@ export default function MovieList() {
     {}
   );
   const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage] = useState(8);
   const [totalMovies, setTotalMovies] = useState(0);
   const { user } = useUserStateContext();
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 640);
+  const [moviesPerPage] = useState(8);
 
   useEffect(() => {
     const handleResize = () => {
@@ -86,16 +86,16 @@ export default function MovieList() {
           </Link>
         ))}
       </div>
-      <div>
-        {!isMobile && (
+      {!isMobile && (
+        <div className="mt-120">
           <PageNav
             totalMovies={totalMovies}
             moviesPerPage={moviesPerPage}
             currentPage={currentPage}
             onPageChange={handlePageChange}
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -18,29 +18,31 @@ export default function PageNav({
   }
 
   return (
-    <div className="flex justify-center items-center gap-x-4 mb-[109px]">
+    <div className="flex justify-center items-center gap-x-16 mb-[109px]">
       <button
-        className="font-bold text-base leading-6"
+        className="text-body-regular font-bold font-montserrat text-textColor cursor-pointer"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
         Prev
       </button>
-      <div className="flex gap-x-2">
+      <div className="flex gap-x-8">
         {pageNumbers.map((number) => (
           <div
             key={number}
-            className={`w-32 h-32 rounded-[4px] flex justify-center items-center ${
+            className={`w-32 h-32 rounded-[4px] flex justify-center items-center cursor-pointer ${
               currentPage === number ? "bg-[#2BD17E]" : "bg-[#092C39]"
             }`}
             onClick={() => onPageChange(number)}
           >
-            <p className="text-base font-bold leading-6">{number}</p>
+            <p className="text-body-regular font-bold font-montserrat text-textColor">
+              {number}
+            </p>
           </div>
         ))}
       </div>
       <button
-        className="font-bold text-base leading-6"
+        className="text-body-regular font-bold font-montserrat text-textColor cursor-pointer"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === pageNumbers.length}
       >

@@ -12,7 +12,9 @@ export default function Checkbox({ isSelected, setIsSelected }: CheckboxProps) {
       >
         {isSelected && <FaCheck className="text-textColor w-[12px]" />}
       </div>
-      <p className="text-body-small text-textColor">Remember me</p>
+      <p className="text-body-small text-textColor font-regular font-montserrat">
+        Remember me
+      </p>
     </div>
   );
 }
