@@ -144,29 +144,6 @@ To set up the project locally, follow these steps:
 - **DELETE /api/movies/[movieId]**
   - **Description**: Deletes a specific movie.
 
-## Contributing
-
-We welcome contributions! To contribute to this project, please follow these steps:
-
-1. **Fork the repository**.
-2. **Create a new branch** for your feature or bug fix:
-   ```bash
-   git checkout -b feature/YourFeature
-   ```
-3. **Make your changes** and commit them:
-   ```bash
-   git commit -m "Add some feature"
-   ```
-4. **Push to the branch**:
-   ```bash
-   git push origin feature/YourFeature
-   ```
-5. **Open a Pull Request**.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Components Documentation
 
 # Button Component
@@ -330,8 +307,6 @@ const fetchPageMovies = async (userId, page) => {
 
 # General Documentation
 
-# General Documentation
-
 ## Project Structure
 
 - **components/**: Contains all reusable UI components.
@@ -355,3 +330,26 @@ const fetchPageMovies = async (userId, page) => {
 - Use hooks for shared logic.
 - Write unit tests for components and utility functions.
 - Document components and hooks for better maintainability.
+
+## Contributing
+
+We welcome contributions! To contribute to this project, please follow these steps:
+
+1. **Fork the repository**.
+2. **Create a new branch** for your feature or bug fix:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. **Make your changes** and commit them:
+   ```bash
+   git commit -m "Add some feature"
+   ```
+4. **Push to the branch**:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. **Open a Pull Request**.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
