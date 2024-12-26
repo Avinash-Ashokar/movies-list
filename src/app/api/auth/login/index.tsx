@@ -26,20 +26,26 @@ export const loginUser = async (
   try {
     await setPersistence(auth, persistenceType);
     await createUserWithEmailAndPassword(auth, email, password);
+
+    return { ok: true };
   } catch (error) {
     const err = error as Error;
     if (err.message === "Firebase: Error (auth/email-already-in-use).") {
       // If user already exist, signin
       try {
         await setPersistence(auth, persistenceType);
-        await signInWithEmailAndPassword(auth, email, password);
+        const res = await signInWithEmailAndPassword(auth, email, password);
+
+        return { ok: true };
       } catch (createError) {
         const err = createError as Error;
-        console.log(err.message);
+
+        return { ok: false, errorMessage: err.message };
       }
     } else {
       const err = error as Error;
-      console.log(err.message);
+
+      return { ok: false, errorMessage: err.message };
     }
   }
 };
