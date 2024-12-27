@@ -6,13 +6,22 @@ The Movie List Website is a web application that allows users to store and manag
 
 ## Table of Contents
 
+- [Overview](#overview)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Project Architecture](#project-architecture)
 - [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
 - [API Documentation](#api-documentation)
-- [Contributing](#contributing)
+- [Component Documentation](#component-documentation)
+  - [Button Component](#button-component)
+  - [ImageUpload Component](#imageupload-component)
+  - [MovieCard Component](#moviecard-component)
+- [Hook Documentation](#hook-documentation)
+  - [useKeyPress Hook](#usekeypress-hook)
+- [Utility Function Documentation](#utility-function-documentation)
+  - [Helper Utility Functions](#helper-utility-functions)
+- [General Documentation](#general-documentation)
 - [License](#license)
 
 ## Features
@@ -22,24 +31,29 @@ The Movie List Website is a web application that allows users to store and manag
 - Responsive design for mobile and desktop
 - Image upload for movie posters
 - Infinite scrolling for movie lists
-- Dark mode support
 
 ## Technologies Used
 
 - **Frontend**: React, Next.js, TypeScript, Tailwind CSS
 - **Backend**: Firebase (Firestore, Authentication)
 - **State Management**: React Context API
-- **Testing**: Jest, React Testing Library
 
 ## Project Architecture
 
 src/
+
 ├── components/ # Reusable UI components
+
 ├── context/ # Context API for global state management
+
 ├── hooks/ # Custom React hooks
+
 ├── pages/ # Next.js pages
+
 ├── styles/ # Global styles and Tailwind CSS configuration
+
 ├── types/ # TypeScript type definitions
+
 └── utility/ # Utility functions and helpers
 
 ## Setup Instructions
@@ -86,7 +100,6 @@ To set up the project locally, follow these steps:
 - **Add Movie**: Click on the "Add a new movie" button to add a movie to your collection.
 - **View Movies**: The movie list will display all movies added by the user.
 - **Edit Movie**: Click on a movie to edit its details.
-- **Delete Movie**: Remove a movie from your collection.
 
 ## API Documentation
 
@@ -144,13 +157,13 @@ To set up the project locally, follow these steps:
 - **DELETE /api/movies/[movieId]**
   - **Description**: Deletes a specific movie.
 
-## Components Documentation
+# Components Documentation
 
-# Button Component
+## Button Component
 
 The `Button` component is a reusable button element that can be used throughout the application.
 
-## Props
+### Props
 
 | Prop      | Type       | Description                                      |
 | --------- | ---------- | ------------------------------------------------ |
@@ -166,11 +179,11 @@ import Button from "@/components/button";
 <Button label="Click Me" type="action" onClick={handleClick} />;
 ```
 
-# ImageUpload Component
+## ImageUpload Component
 
 The `ImageUpload` component allows users to upload images for their movie posters.
 
-## Props
+### Props
 
 | Prop           | Type       | Description                                   |
 | -------------- | ---------- | --------------------------------------------- |
@@ -220,11 +233,11 @@ import { MovieCard } from "@/components/movie-list/movie-card";
 
 # Hooks Documentation
 
-# useKeyPress Hook
+## useKeyPress Hook
 
 The `useKeyPress` hook allows you to listen for key press events.
 
-## Parameters
+### Parameters
 
 | Parameter   | Type       | Description                                   |
 | ----------- | ---------- | --------------------------------------------- |
@@ -320,7 +333,7 @@ const fetchPageMovies = async (userId, page) => {
 ## Coding Standards
 
 - Use TypeScript for type safety.
-- Follow the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) for JavaScript/React code.
+- Follow this [Movie List Style Guide](https://www.figma.com/design/rsilPqu30TpPX7IOPqLPAf/Movie-list?node-id=2-3&p=f&t=IC04KqXzQvYDkzaD-0) for JavaScript/React code.
 - Use meaningful variable and function names.
 - Write comments for complex logic.
 
@@ -328,27 +341,7 @@ const fetchPageMovies = async (userId, page) => {
 
 - Keep components small and focused on a single responsibility.
 - Use hooks for shared logic.
-- Write unit tests for components and utility functions.
 - Document components and hooks for better maintainability.
-
-## Contributing
-
-We welcome contributions! To contribute to this project, please follow these steps:
-
-1. **Fork the repository**.
-2. **Create a new branch** for your feature or bug fix:
-   ```bash
-   git checkout -b feature/YourFeature
-   ```
-3. **Make your changes** and commit them:
-   ```bash
-   git commit -m "Add some feature"
-   ```
-4. **Push to the branch**:
-   ```bash
-   git push origin feature/YourFeature
-   ```
-5. **Open a Pull Request**.
 
 ## License
 
