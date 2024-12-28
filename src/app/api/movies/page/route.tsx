@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import {
   collection,
   getDocs,
@@ -8,6 +8,7 @@ import {
   startAfter,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { Movie } from "@/types";
 
 export async function GET(request: NextRequest) {
   try {
@@ -29,7 +30,7 @@ export async function GET(request: NextRequest) {
 
     // Reference to the user's movies collection in Firestore
     const moviesRef = collection(db, "users", uid, "movies");
-    let movieData: { [key: string]: any } = {};
+    const movieData: { [key: string]: Movie } = {};
     let movieQuery;
 
     // If it's the first page, create a query to fetch the first set of movies
@@ -60,7 +61,7 @@ export async function GET(request: NextRequest) {
     const querySnapshot = await getDocs(movieQuery);
     querySnapshot.forEach((doc) => {
       // Store each movie document's data in the movieData object
-      movieData[doc.id] = doc.data();
+      movieData[doc.id] = doc.data() as Movie;
     });
 
     // Return the fetched movie data as a JSON response
@@ -69,6 +70,9 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     // Handle any errors that occur during the fetch process
-    return Response.json({ error: "Failed to fetch movies" }, { status: 500 });
+    return Response.json(
+      { error: error, errorMsg: "Failed to fetch movies" },
+      { status: 500 }
+    );
   }
 }
