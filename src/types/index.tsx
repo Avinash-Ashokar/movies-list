@@ -14,6 +14,7 @@ export interface ButtonProps {
   type: string; // Type of the button (e.g., "action", "outline")
   label: string; // Label text displayed on the button
   onClick?: () => void; // Optional click event handler
+  loading?: boolean;
 }
 
 // Interface for InputField component properties
