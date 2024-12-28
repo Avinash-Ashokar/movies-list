@@ -85,17 +85,37 @@ const UpdateMovie: FC<UpdateMovieProps> = ({
     const { title, year, imageUrl } = movieData; // Destructuring movie data
     setInputError({ title: "", imageUrl: "", year: "" }); // Resetting input errors
 
+    const yearRegex = /^\d{4}$/;
+    const yearNum = parseInt(year);
+    const currentYear = new Date().getFullYear();
+
     // Validating input fields
-    if (!imageUrl || !title || !year) {
+    if (
+      !imageUrl ||
+      !title ||
+      !year ||
+      !yearRegex.test(year) ||
+      yearNum > currentYear
+    ) {
       if (!imageUrl)
         setInputError((prev) => ({ ...prev, imageUrl: "Image is required" }));
       if (!title)
         setInputError((prev) => ({ ...prev, title: "Title is required" }));
-      if (!year || !/^\d{4}$/.test(year)) {
+      if (!year)
+        setInputError((prev) => ({ ...prev, year: "Year is required" }));
+
+      if (!/^\d{4}$/.test(year)) {
         // Check if year is a 4-digit number
         setInputError((prev) => ({
           ...prev,
           year: "Year must be a 4-digit number",
+        }));
+      }
+
+      if (yearNum > currentYear) {
+        setInputError((prev) => ({
+          ...prev,
+          year: `Year cannot be greater than ${currentYear}`,
         }));
       }
 
