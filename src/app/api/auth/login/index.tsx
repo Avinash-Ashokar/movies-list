@@ -42,7 +42,7 @@ export const loginUser = async (
         // Set the persistence again for signing in
         await setPersistence(auth, persistenceType);
         // Sign in the user with the provided email and password
-        const res = await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email, password);
 
         return { ok: true }; // Return success response
       } catch (createError) {

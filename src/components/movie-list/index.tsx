@@ -6,9 +6,10 @@ import { fetchAllMovies, fetchMoviesPage } from "@/utility/helper";
 import { useUserStateContext } from "@/context/userStateContext";
 import { MovieCard } from "./movie-card";
 import PageNav from "../page-nav";
+import { Movie } from "@/types";
 
 export default function MovieList() {
-  const [movieListData, setMovieListData] = useState<{ [key: string]: any }>(
+  const [movieListData, setMovieListData] = useState<{ [key: string]: Movie }>(
     {}
   );
   const [currentPage, setCurrentPage] = useState(1);

@@ -107,7 +107,7 @@ const UpdateMovie: FC<UpdateMovieProps> = ({
         notifyError("User is not authenticated."); // Notifying if user is not authenticated
       }
     } catch (error) {
-      notifyError("There was an error saving your data."); // Notifying error during submission
+      notifyError(`There was an error saving your data: ${error}`); // Include error message in notification
     }
 
     router.push("/"); // Redirecting to home after submission

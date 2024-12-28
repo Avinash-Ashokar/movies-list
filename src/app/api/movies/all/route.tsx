@@ -30,8 +30,10 @@ export async function GET(request: NextRequest) {
       totalMovies: snapshot.size, // Total number of movies fetched
       success: true, // Indicating the request was successful
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     // Handling any errors that occur during the process
-    return Response.json({ error: error.message }, { status: 500 });
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+    return Response.json({ error: errorMessage }, { status: 500 });
   }
 }
