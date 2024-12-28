@@ -33,24 +33,30 @@ export default function HomePage() {
 
   const router = useRouter(); // Getting the router instance
 
-  // Effect to redirect to sign-in if user is not logged in
-  useEffect(() => {
-    if (!user) router.push("/signin"); // Redirects to sign-in page if no user
-  }, [user, router]);
-
   const [totalMovies, setTotalMovies] = useState<number | undefined>(0); // State to hold total movies
+  const [loading, setLoading] = useState(true); // State to manage loading status
 
   // Effect to fetch movies when user is available
   useEffect(() => {
-    if (!user) return; // Exit if no user
+    if (!user) {
+      router.push("/signin"); // Redirects to sign-in page if no user
+      setLoading(false); // Set loading to false if redirecting
+      return; // Exit the effect early
+    }
 
     const fetchData = async () => {
-      const res = await fetchAllMovies(user.uid); // Fetching movies for the user
-      setTotalMovies(res.totalMovies); // Setting the total movies in state
+      if (user) {
+        // Check if user is not null
+        const res = await fetchAllMovies(user.uid); // Fetching movies for the user
+        setTotalMovies(res.totalMovies); // Setting the total movies in state
+      }
+      setLoading(false); // Set loading to false after fetching data
     };
 
     fetchData(); // Calling the fetch function
-  }, [user]);
+  }, [user, router]); // Added 'router' to the dependency array
+
+  if (loading) return null; // Prevent rendering until loading is complete
 
   // If there are no movies, render the EmptyPage component
   if (totalMovies === 0) return <EmptyPage />;
