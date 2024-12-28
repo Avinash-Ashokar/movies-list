@@ -1,5 +1,6 @@
 // Import necessary modules and libraries
 import { toast } from "react-toastify";
+import imageCompression from "browser-image-compression";
 
 // Fetch all movies for a given user ID
 export async function fetchAllMovies(uid: string) {
@@ -68,4 +69,23 @@ export const validateEmail = (email: string): boolean => {
 // Validate the password length
 export const validatePassword = (password: string): boolean => {
   return password.length >= 6; // Password must be at least 6 characters
+};
+
+export const compressImage = async (imageFile: File) => {
+  // Define options for image compression
+  const options = {
+    maxSizeMB: 0.2, // Maximum size in MB
+    maxWidthOrHeight: 1920, // Maximum width/height
+    useWebWorker: true, // Use web worker for better performance
+  };
+
+  try {
+    // Attempt to compress the image file using the specified options
+    const compressedFile = await imageCompression(imageFile, options);
+    return compressedFile; // Return the compressed file
+  } catch (error) {
+    // Log any errors that occur during compression
+    console.error("Error compressing image:", error);
+    return null; // Return null if compression fails
+  }
 };

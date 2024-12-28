@@ -8,6 +8,7 @@ import React, { useCallback } from "react"; // Importing React and useCallback h
 import { useDropzone } from "react-dropzone"; // Importing useDropzone for drag-and-drop functionality
 import { ImageUploadProps } from "@/types"; // Importing types for props
 import { DownloadIcon } from "../../../public"; // Importing download icon
+import { compressImage, notifyError } from "@/utility/helper";
 
 // ImageUpload component definition
 const ImageUpload = ({
@@ -17,8 +18,11 @@ const ImageUpload = ({
 }: ImageUploadProps) => {
   // Callback function to handle file drop
   const onDrop = useCallback(
-    (acceptedFiles: File[]) => {
-      const file = acceptedFiles[0]; // Get the first accepted file
+    async (acceptedFiles: File[]) => {
+      const file = await compressImage(acceptedFiles[0]); // Get the first accepted file
+
+      if (file === null) notifyError("Image is not in the proper format");
+
       if (file) {
         const reader = new FileReader(); // Create a FileReader to read the file
         reader.onload = (e) => {

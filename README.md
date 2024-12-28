@@ -30,7 +30,9 @@ The Movie List Website is a web application that allows users to store and manag
 - Add, update, and delete movies
 - Responsive design for mobile and desktop
 - Image upload for movie posters
+- Image compression for better utilization of firestore
 - Infinite scrolling for movie lists
+- Notifies the user when there is a error
 
 ## Technologies Used
 
