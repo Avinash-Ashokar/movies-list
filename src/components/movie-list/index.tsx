@@ -17,6 +17,7 @@ export default function MovieList() {
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 640);
   const [moviesPerPage] = useState(8);
 
+  // Effect to handle window resize and update mobile state
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 640);
@@ -28,6 +29,7 @@ export default function MovieList() {
     };
   }, []);
 
+  // Effect to fetch movie data when user is available and current page changes
   useEffect(() => {
     const fetchData = async () => {
       if (!user?.uid) return;
@@ -41,6 +43,7 @@ export default function MovieList() {
         moviesPerPage
       );
 
+      // Update movie list data based on screen size
       if (window.innerWidth < 640) {
         setMovieListData((prevData) => ({ ...prevData, ...movieData }));
       } else {
@@ -51,6 +54,7 @@ export default function MovieList() {
     fetchData();
   }, [currentPage]);
 
+  // Effect to handle infinite scrolling for mobile devices
   useEffect(() => {
     if (window.innerWidth > 640) return;
 
@@ -59,6 +63,7 @@ export default function MovieList() {
         window.innerHeight + document.documentElement.scrollTop >=
         document.documentElement.offsetHeight * 0.8
       ) {
+        // Load more movies if available
         if (Object.keys(movieListData).length < totalMovies) {
           handlePageChange(currentPage + 1);
         }
@@ -71,10 +76,12 @@ export default function MovieList() {
     };
   }, [movieListData, totalMovies]);
 
+  // Function to change the current page
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
+  // Return nothing if movie data is not available
   if (!movieListData) return;
 
   return (
