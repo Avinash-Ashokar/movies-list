@@ -78,6 +78,8 @@ const UpdateMovie: FC<UpdateMovieProps> = ({
     year: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   // Function to handle form submission
   const handleSubmit = async () => {
     const { title, year, imageUrl } = movieData; // Destructuring movie data
@@ -89,17 +91,20 @@ const UpdateMovie: FC<UpdateMovieProps> = ({
         setInputError((prev) => ({ ...prev, imageUrl: "Image is required" }));
       if (!title)
         setInputError((prev) => ({ ...prev, title: "Title is required" }));
-      if (!year)
+      if (!year || !/^\d{4}$/.test(year)) {
+        // Check if year is a 4-digit number
         setInputError((prev) => ({
           ...prev,
-          year: "Publishing year is required",
+          year: "Year must be a 4-digit number",
         }));
+      }
 
       notifyError("All Fields are required"); // Notifying user of missing fields
       return; // Exiting function if validation fails
     }
 
     try {
+      setLoading(true);
       if (user) {
         await addMovie(user.uid, movieData); // Adding movie if user is authenticated
         notifySuccess("Movie data updated successfully!"); // Notifying success
@@ -110,6 +115,7 @@ const UpdateMovie: FC<UpdateMovieProps> = ({
       notifyError(`There was an error saving your data: ${error}`); // Include error message in notification
     }
 
+    setLoading(false);
     router.push("/"); // Redirecting to home after submission
   };
 
@@ -142,7 +148,12 @@ const UpdateMovie: FC<UpdateMovieProps> = ({
           <Link href="/">
             <Button type="outline" label="Cancel" />
           </Link>
-          <Button onClick={handleSubmit} type="action" label="Submit" />
+          <Button
+            onClick={handleSubmit}
+            type="action"
+            label="Submit"
+            loading={loading}
+          />
         </div>
         <ImageUpload
           imageFile={movieData.imageUrl} // Current image file
@@ -176,7 +187,12 @@ const UpdateMovie: FC<UpdateMovieProps> = ({
             <Link href="/">
               <Button type="outline" label="Cancel" />
             </Link>
-            <Button onClick={handleSubmit} type="action" label="Submit" />
+            <Button
+              onClick={handleSubmit}
+              type="action"
+              label="Submit"
+              loading={loading}
+            />
           </div>
         </div>
       </div>
